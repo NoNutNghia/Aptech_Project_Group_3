@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\VirusArticleModel;
+use App\User;
 
-class VirusArticleController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class VirusArticleController extends Controller
      */
     public function index()
     {
-        //
-        $articles = VirusArticleModel::paginate(5);
-        return view('admin.articles')->with('articles', $articles);
+        $users = User::all();
+        return view('admin.users')->with('users', $users);
     }
 
     /**
@@ -26,7 +25,7 @@ class VirusArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return null;
     }
 
     /**
@@ -37,13 +36,7 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $article = new VirusArticleModel;
-        $article->name = $request->name;
-        $article->description = $request->description;
-        $article->img = '';
-
-        $article->save();
-        return view('articles.create');
+        return null;
     }
 
     /**

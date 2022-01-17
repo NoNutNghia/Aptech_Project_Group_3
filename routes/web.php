@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/main', 'VirusArticleController@view');
+Route::resource('/articles', 'VirusArticleController');
+Route::resource('/users', 'UserController');
 
 Auth::routes();
 

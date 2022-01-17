@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -33,7 +34,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('articles.index')}}">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('users.index')}}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Feedback</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
