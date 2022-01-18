@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users')->with('users', $users);
+        return view('admin.users.users')->with('users', $users);
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return null;
+        return $this->index();
     }
 
     /**

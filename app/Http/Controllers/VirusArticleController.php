@@ -16,7 +16,7 @@ class VirusArticleController extends Controller
     {
         //
         $articles = VirusArticleModel::paginate(5);
-        return view('admin.articles')->with('articles', $articles);
+        return view('admin.articles.articles')->with('articles', $articles);
     }
 
     /**
@@ -26,7 +26,7 @@ class VirusArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return view('admin.articles.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class VirusArticleController extends Controller
         $article->img = '';
 
         $article->save();
-        return view('articles.create');
+        return $this->index();
     }
 
     /**

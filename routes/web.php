@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/articles', 'VirusArticleController');
-Route::resource('/users', 'UserController');
+// Route admin
+Route::resource('/articles', 'VirusArticleController')->middleware(['auth']);
+Route::resource('/users', 'UserController')->middleware(['auth']);
+
 
 Auth::routes();
 

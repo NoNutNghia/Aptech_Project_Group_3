@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVirusArticleModelsTable extends Migration
+class CreateVirusDetailModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateVirusArticleModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('virus_article_models', function (Blueprint $table) {
+        Schema::create('virus_detail_models', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('year_originated');
-            $table->string('img');
-            $table->text('description');
+            $table->integer('virus_id');
+            $table->string('location_of_origin');
+            $table->integer('number_of_infections');
+            $table->integer('number_of_death');
+            $table->string('precaution_required');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateVirusArticleModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('virus_article_models');
+        Schema::dropIfExists('virus_detail_models');
     }
 }

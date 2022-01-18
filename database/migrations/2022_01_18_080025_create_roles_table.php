@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVirusArticleModelsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateVirusArticleModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('virus_article_models', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('year_originated');
-            $table->string('img');
-            $table->text('description');
+            $table->string('role_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateVirusArticleModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('virus_article_models');
+        Schema::dropIfExists('roles');
     }
 }
