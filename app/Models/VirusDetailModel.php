@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class VirusDetailModel extends Model
 {
     protected $fillable =[
-        'virus_id',
+        'id',
         'location_of_origin',
         'spread',
         'number_of_infections',
@@ -16,6 +16,6 @@ class VirusDetailModel extends Model
     ];
 
     public function article() {
-        return $this->hasOne('App\Models\VirusArticleModel');
+        return $this->hasOne('App\Models\VirusArticleModel', 'id');
     }
 }

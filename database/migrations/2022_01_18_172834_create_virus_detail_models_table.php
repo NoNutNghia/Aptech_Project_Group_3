@@ -15,8 +15,8 @@ class CreateVirusDetailModelsTable extends Migration
     {
         Schema::create('virus_detail_models', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('virus_id');
             $table->string('location_of_origin');
+            $table->string('spread');
             $table->integer('number_of_infections');
             $table->integer('number_of_death');
             $table->string('precaution_required');

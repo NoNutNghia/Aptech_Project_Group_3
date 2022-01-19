@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\VirusArticleModel;
+use App\Models\VirusDetailModel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VirusArticleController extends Controller
 {
@@ -40,9 +43,18 @@ class VirusArticleController extends Controller
         $article = new VirusArticleModel;
         $article->name = $request->name;
         $article->description = $request->description;
+        $article->year_originated = $request->year_originated;
         $article->img = '';
 
+        $articleDetail = new VirusDetailModel;
+        $articleDetail->location_of_origin = $request->location_of_origin;
+        $articleDetail->spread = $request->spread;
+        $articleDetail->number_of_infections = $request->number_of_infections;
+        $articleDetail->number_of_death = $request->number_of_death;
+        $articleDetail->precaution_required = $request->precaution_required;
+
         $article->save();
+        $articleDetail->save();
         return $this->index();
     }
 
@@ -65,7 +77,9 @@ class VirusArticleController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        $article = VirusArticleModel::find($id);
+//        return $article;
+        return view('admin.articles.edit')->with('article', $article);
     }
 
     /**
@@ -75,9 +89,11 @@ class VirusArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,VirusArticleModel $article)
     {
-        return null;
+        $article->update($request->all());
+        $article->detail->update($request->all());
+        return $this->index();
     }
 
     /**
@@ -88,6 +104,9 @@ class VirusArticleController extends Controller
      */
     public function destroy($id)
     {
-        return null;
+        $article = VirusArticleModel::find($id);
+        $article->delete();
+        $article->detail->delete();
+        return $this->index();
     }
 }

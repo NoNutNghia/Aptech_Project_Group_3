@@ -25,7 +25,13 @@
                             <td style="max-width: 160px; vertical-align: middle">
                                 <a href="{{route('articles.show', $article->id)}}" class="btn btn-success" role="button">Info <i class="fas fa-info-circle"></i></a>
                                 <a href="{{route('articles.edit', $article->id)}}" class="btn btn-warning" role="button">Edit <i class="fas fa-edit"></i></a>
-                                <a href="{{route('articles.destroy', $article->id)}}" class="btn btn-danger" role="button">Delete <i class="fas fa-trash-alt"></i></a>
+                                <form action="{{route('articles.destroy', $article->id)}}" class="d-inline" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-danger">
+                                        Delete <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

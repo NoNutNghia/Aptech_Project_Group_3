@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class VirusArticleModel extends Model
 {
     protected $fillable = [
+        'id',
         'name',
         'img',
         'description',
-        'year_originated'
+        'year_originated',
+
     ];
 
     public function detail() {
-        return $this->hasOne('App\Model\VirusDetailModel');
+        return $this->hasOne('App\Models\VirusDetailModel', 'id');
     }
 
     public function type() {
