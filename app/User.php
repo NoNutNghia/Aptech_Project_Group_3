@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
 
     public function feedback() {
-        return $this->hasMany('App\Models\Feedback');
+        return $this->hasMany('App\Models\Feedback', 'user_id');
     }
 }

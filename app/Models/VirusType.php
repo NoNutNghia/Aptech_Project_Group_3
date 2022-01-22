@@ -12,6 +12,6 @@ class VirusType extends Model
     ];
 
     public function articles() {
-        return $this->hasMany('App\Models\VirusArticleModel');
+        return $this->hasMany('App\Models\VirusArticleModel', 'type_id');
     }
 }

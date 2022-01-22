@@ -13,20 +13,25 @@
             </div>
             <div class="form-inline justify-content-between mb-4" >
                 <label for="year_originated">Year originated:</label>
-                <input type="number" class="form-control col-1" id="year_originated" name="year_originated" required>
+                <input type="number" class="form-control " style="width: 100px" max="2022" id="year_originated" name="year_originated" required>
                 <label for="number_of_infections">Number of Infections (At this time):</label>
                 <input type="number" class="form-control" id="number_of_infections" name="number_of_infections" required>
                 <label for="number_of_death">Number of Death (At this time):</label>
                 <input type="number" class="form-control" id="number_of_death" name="number_of_death" required>
             </div>
-{{--            <div class="form-inline mb-4">--}}
-{{--                <label for="virus_type" class="mr-3">Type of virus: </label>--}}
-{{--                <select name="virus_type" class="custom-select col-3">--}}
-{{--                    <option value="volvo">Volvo</option>--}}
-{{--                    <option value="fiat">Fiat</option>--}}
-{{--                    <option value="audi">Audi</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
+            <div class="form-inline mb-4">
+                <label for="virus_type" class="mr-4">Choice type of virus: </label>
+                <select name="virus_type" class="custom-select col-3">
+                    <option value="volvo">Volvo</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </div>
+
+            <div class="form-inline mb-4">
+                <label for="new_virus_type" class="mr-3">Or input type of virus here:</label>
+                <input type="text" class="form-control col-3 mr-4" id="new_virus_type" name="new_virus_type">
+            </div>
             <div class="form-group">
                 <label for="location_of_origin">Location of origin:</label>
                 <input type="text" class="form-control" id="location_of_origin" placeholder="Location of origin" name="location_of_origin" required>
@@ -48,7 +53,7 @@
 {{--                <input type="file" class="custom-file-input" id="customFile">--}}
 {{--                <label class="custom-file-label" for="customFile">Choose file</label>--}}
 {{--            </div>--}}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
 

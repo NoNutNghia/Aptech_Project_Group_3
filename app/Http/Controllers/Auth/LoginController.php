@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\VirusArticleController;
+use App\Http\Controllers\SectionController;
+
 class LoginController extends Controller
 {
     /*
@@ -63,6 +66,18 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return $this->loggedOut($request) ?: redirect('/');
+        return $this->loggedOut($request) ?: redirect('/vertex');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->role_id == '1') {
+            $articles = new VirusArticleController;
+            return $articles->index();
+        }
+        if($user->role_id == '2') {
+            $sections = new SectionController;
+            return $sections->index();
+        }
     }
 }

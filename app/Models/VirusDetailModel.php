@@ -16,6 +16,6 @@ class VirusDetailModel extends Model
     ];
 
     public function article() {
-        return $this->hasOne('App\Models\VirusArticleModel', 'id');
+        return $this->hasOne('App\Models\VirusArticleModel');
     }
 }

@@ -17,6 +17,7 @@ class CreateVirusArticleModelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('year_originated');
+            $table->integer('type_id');
             $table->string('img');
             $table->text('description');
             $table->timestamps();

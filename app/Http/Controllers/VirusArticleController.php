@@ -7,6 +7,7 @@ use App\Models\VirusArticleModel;
 use App\Models\VirusDetailModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class VirusArticleController extends Controller
 {
@@ -45,6 +46,7 @@ class VirusArticleController extends Controller
         $article->description = $request->description;
         $article->year_originated = $request->year_originated;
         $article->img = '';
+        $article->type_id = 1;
 
         $articleDetail = new VirusDetailModel;
         $articleDetail->location_of_origin = $request->location_of_origin;
@@ -53,9 +55,12 @@ class VirusArticleController extends Controller
         $articleDetail->number_of_death = $request->number_of_death;
         $articleDetail->precaution_required = $request->precaution_required;
 
+
         $article->save();
         $articleDetail->save();
+
         return $this->index();
+
     }
 
     /**
@@ -66,7 +71,8 @@ class VirusArticleController extends Controller
      */
     public function show($id)
     {
-        return null;
+        $article = VirusArticleModel::find($id);
+        return $article;
     }
 
     /**
@@ -78,7 +84,7 @@ class VirusArticleController extends Controller
     public function edit($id)
     {
         $article = VirusArticleModel::find($id);
-//        return $article;
+//        return $article->detail;
         return view('admin.articles.edit')->with('article', $article);
     }
 

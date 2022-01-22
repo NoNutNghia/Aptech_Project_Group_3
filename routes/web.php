@@ -11,13 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SectionController@index');
 
 // Route admin
-Route::resource('/articles', 'VirusArticleController')->middleware(['auth']);
-Route::resource('/users', 'UserController')->middleware(['auth']);
+Route::resource('admin/articles', 'VirusArticleController')->middleware(['auth', 'can:isAdmin']);
+Route::resource('admin/users', 'UserController')->middleware(['auth', 'can:isAdmin']);
+Route::get('admin/feedback', 'FeedbackController@index')->middleware(['auth', 'can:isAdmin'])->name('feedback.index');
+
+
+// Route user
+Route::get('/vertex', 'SectionController@index')->name('section.index');
+Route::get('/vertex/feedback', 'FeedbackController@create')->middleware(['auth', 'can:isUser'])->name('feedback.create');
+Route::post('/vertex/feedback', 'FeedbackController@store')->middleware(['auth', 'can:isUser'])->name('feedback.store');
+
+
 
 Auth::routes();
 

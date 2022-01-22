@@ -5,16 +5,16 @@
     <div class="container">
         <h2>EDIT ARTICLE VIRUS FORM</h2>
         <p>You must fill out all input about the article below:</p>
-        <form action="{{route('articles.update', ['article' => $article])}}" class="was-validated" method="POST">
+        <form action="{{route('articles.update', $article->id)}}" class="was-validated" method="POST">
             @csrf
-            @method("PUT")
+            @method("PATCH")
             <div class="form-group mb-4">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Name of virus" name="name" value="{{$article->name}}" required>
             </div>
             <div class="form-inline justify-content-lg-between mb-4" >
                 <label for="year_originated">Year originated:</label>
-                <input type="number" class="form-control " style="width: 100px" id="year_originated" name="year_originated" value="{{$article->year_originated}}" required>
+                <input type="number" class="form-control " style="width: 100px" max="2022" id="year_originated" name="year_originated" value="{{$article->year_originated}}" required>
                 <label for="number_of_infections">Number of Infections (At this time):</label>
                 <input type="number" class="form-control" id="number_of_infections" name="number_of_infections" value="{{$article->detail->number_of_infections}}" required>
                 <label for="number_of_death">Number of Death (At this time):</label>
