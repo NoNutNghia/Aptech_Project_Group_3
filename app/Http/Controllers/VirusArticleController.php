@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\VirusArticleModel;
 use App\Models\VirusDetailModel;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+
+use App\Models\VirusType;
 
 class VirusArticleController extends Controller
 {
@@ -30,7 +29,8 @@ class VirusArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.articles.create');
+        $typeViruses = VirusType::all();
+        return view('admin.articles.create')->with('typeViruses', $typeViruses);
     }
 
     /**
@@ -41,11 +41,12 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $imageUrl = $this->storeImage($request);
         $article = new VirusArticleModel;
         $article->name = $request->name;
         $article->description = $request->description;
         $article->year_originated = $request->year_originated;
-        $article->img = '';
+        $article->img = $imageUrl;
         $article->type_id = 1;
 
         $articleDetail = new VirusDetailModel;
@@ -60,6 +61,7 @@ class VirusArticleController extends Controller
         $articleDetail->save();
 
         return $this->index();
+
 
     }
 
@@ -114,5 +116,11 @@ class VirusArticleController extends Controller
         $article->delete();
         $article->detail->delete();
         return $this->index();
+    }
+
+    // Name image and get path URL
+    protected function storeImage(Request $request) {
+        $path = $request->file('file')->store('public/virusImage');
+        return substr($path, strlen('public/'));
     }
 }

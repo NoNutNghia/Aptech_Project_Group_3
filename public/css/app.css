@@ -10978,3 +10978,23 @@ a.text-dark:focus {
   transition: 0.5s ease all;
 }
 
+.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  transition: all 0.4s linear;
+}
+
+.hovereffect:hover img {
+  transform: scale(1.2);
+}
+

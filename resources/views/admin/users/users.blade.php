@@ -9,7 +9,6 @@
                     <tr>
                         <th>#</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -18,11 +17,15 @@
                         <tr>
                             <td>{{$user->id}}</td>
                             <td style="word-wrap: break-word; max-width: 160px">{{$user->username}}</td>
-                            <td style="word-wrap: break-word; max-width: 160px">{{$user->password}}</td>
                             <td style="max-width: 160px; vertical-align: middle">
                                 <a href="{{route('users.show', $user->id)}}" class="btn btn-success" role="button">Info <i class="fas fa-info-circle"></i></a>
-                                <a href="{{route('users.edit', $user->id)}}" class="btn btn-warning" role="button">Edit <i class="fas fa-edit"></i></a>
-                                <a href="{{route('users.destroy', $user->id)}}" class="btn btn-danger" role="button">Delete <i class="fas fa-trash-alt"></i></a>
+                                <form action="{{route('users.destroy', $user->id)}}" class="d-inline" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-danger">
+                                        Delete <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

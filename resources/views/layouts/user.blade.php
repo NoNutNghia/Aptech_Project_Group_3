@@ -47,9 +47,9 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                @foreach($articles as $article)
+                                    <a class="dropdown-item" href="#">{{$article->year_originated}}</a>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -59,9 +59,9 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                @foreach($articles as $article)
+                                    <a class="dropdown-item" href="#">{{$article->type->type_virus}}</a>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item">

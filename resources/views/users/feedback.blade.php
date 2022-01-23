@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.login')
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 <label for="feedback">Feedback:</label>
                 <textarea class="form-control" rows="4" id="feedback" name="feedback" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </div>
 @endsection

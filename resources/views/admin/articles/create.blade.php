@@ -5,7 +5,7 @@
     <div class="container">
         <h2>CREATE ARTICLE VIRUS FORM</h2>
         <p>You must fill out all input about the article below:</p>
-        <form action="{{route('articles.store')}}" class="was-validated" method="POST">
+        <form action="{{route('articles.store')}}" class="was-validated" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-4">
                 <label for="name">Name:</label>
@@ -22,9 +22,9 @@
             <div class="form-inline mb-4">
                 <label for="virus_type" class="mr-4">Choice type of virus: </label>
                 <select name="virus_type" class="custom-select col-3">
-                    <option value="volvo">Volvo</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    @foreach($typeViruses as $typeVirus)
+                        <option value="{{$typeVirus->id}}">{{$typeVirus->type_virus}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -48,11 +48,11 @@
                 <label for="precaution_required">Precaution required:</label>
                 <textarea class="form-control" rows="5" id="precaution_required" name="precaution_required" required></textarea>
             </div>
-{{--            <p>Upload image: </p>--}}
-{{--            <div class="custom-file mb-3 ">--}}
-{{--                <input type="file" class="custom-file-input" id="customFile">--}}
-{{--                <label class="custom-file-label" for="customFile">Choose file</label>--}}
-{{--            </div>--}}
+            <p>Upload image: </p>
+            <div class="custom-file mb-3 ">
+                <input type="file" class="custom-file-input" accept="image/*" id="customFile" name="file" required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
