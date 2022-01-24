@@ -16,7 +16,6 @@ class CreateVirusTypesTable extends Migration
         Schema::create('virus_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type_virus');
-            $table->timestamps();
         });
     }
 

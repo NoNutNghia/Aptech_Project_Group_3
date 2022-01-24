@@ -47,8 +47,8 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
-                                @foreach($articles as $article)
-                                    <a class="dropdown-item" href="#">{{$article->year_originated}}</a>
+                                @foreach($year_wishes as $year_wish)
+                                    <a class="dropdown-item" href="#">{{$year_wish}}</a>
                                 @endforeach
                             </div>
                         </li>
@@ -59,13 +59,16 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
-                                @foreach($articles as $article)
-                                    <a class="dropdown-item" href="#">{{$article->type->type_virus}}</a>
+                                @foreach($virusTypes as $virusType)
+                                    <a class="dropdown-item" href="#">{{$virusType->type_virus}}</a>
                                 @endforeach
                             </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('feedback.create')}}">Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contactUs">Contact Us</a>
                         </li>
 
                     </ul>
@@ -105,13 +108,12 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
 
         <!-- Footer-->
-        <footer class="text-center text-lg-start bg-light text-muted mt-auto bg-dark">
+        <footer class="text-center text-lg-start bg-light text-muted mt-auto bg-dark" id="contactUs">
             <section class="mb-4 mt-3">
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"

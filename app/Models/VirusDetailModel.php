@@ -12,7 +12,7 @@ class VirusDetailModel extends Model
         'detail_description',
         'spread',
         'number_of_infections',
-        'number_of_deaths',
+        'number_of_death',
         'precaution_required'
     ];
 

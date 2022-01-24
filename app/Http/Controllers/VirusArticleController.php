@@ -18,8 +18,7 @@ class VirusArticleController extends Controller
     public function index()
     {
         //
-        $articles = VirusArticleModel::paginate(5);
-        return view('admin.articles.articles')->with('articles', $articles);
+        return view('admin.articles.articles')->with('articles', VirusArticleModel::paginate(5));
     }
 
     /**
@@ -29,8 +28,7 @@ class VirusArticleController extends Controller
      */
     public function create()
     {
-        $typeViruses = VirusType::all();
-        return view('admin.articles.create')->with('typeViruses', $typeViruses);
+        return view('admin.articles.create')->with('typeViruses', VirusType::all());
     }
 
     /**
@@ -41,27 +39,24 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $imageUrl = $this->storeImage($request);
-        $article = new VirusArticleModel;
-        $article->name = $request->name;
-        $article->description = $request->description;
-        $article->year_originated = $request->year_originated;
-        $article->img = $imageUrl;
-        $article->type_id = 1;
+        VirusArticleModel::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'year_originated' => $request->year_originated,
+            'img' => $this->storeImage($request),
+            'type_id' => $request->virus_type,
+        ]);
 
-        $articleDetail = new VirusDetailModel;
-        $articleDetail->location_of_origin = $request->location_of_origin;
-        $articleDetail->spread = $request->spread;
-        $articleDetail->number_of_infections = $request->number_of_infections;
-        $articleDetail->number_of_death = $request->number_of_death;
-        $articleDetail->precaution_required = $request->precaution_required;
-
-
-        $article->save();
-        $articleDetail->save();
+        VirusDetailModel::create([
+            'location_of_origin' => $request->location_of_origin,
+            'detail_description' => $request->detail_description,
+            'spread' => $request->spread,
+            'number_of_infections' => $request->number_of_infections,
+            'number_of_death' => $request->number_of_death,
+            'precaution_required' => $request->precaution_required,
+        ]);
 
         return $this->index();
-
 
     }
 
@@ -85,9 +80,9 @@ class VirusArticleController extends Controller
      */
     public function edit($id)
     {
-        $article = VirusArticleModel::find($id);
+//        $article = VirusArticleModel::find($id);
 //        return $article->detail;
-        return view('admin.articles.edit')->with('article', $article);
+        return view('admin.articles.edit')->with('article', VirusArticleModel::find($id));
     }
 
     /**

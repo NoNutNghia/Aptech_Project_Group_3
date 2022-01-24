@@ -45,8 +45,12 @@
                 <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
             </div>
             <div class="form-group">
+                <label for="precaution_required">Detail Description:</label>
+                <textarea class="form-control" rows="7" id="detail_description" name="detail_description" required></textarea>
+            </div>
+            <div class="form-group">
                 <label for="precaution_required">Precaution required:</label>
-                <textarea class="form-control" rows="5" id="precaution_required" name="precaution_required" required></textarea>
+                <textarea class="form-control" rows="7" id="precaution_required" name="precaution_required" required></textarea>
             </div>
             <p>Upload image: </p>
             <div class="custom-file mb-3 ">

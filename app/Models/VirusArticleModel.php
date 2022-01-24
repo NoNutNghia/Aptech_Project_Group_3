@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class VirusArticleModel extends Model
 {
     protected $fillable = [
-        'id',
         'name',
         'img',
         'description',
+        'type_id',
         'year_originated',
 
     ];
