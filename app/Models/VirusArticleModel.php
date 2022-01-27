@@ -8,11 +8,12 @@ class VirusArticleModel extends Model
 {
     protected $fillable = [
         'name',
-        'img',
         'description',
         'type_id',
+        'img',
+        'img_detail',
+        'img_precaution',
         'year_originated',
-
     ];
 
     public function detail() {
@@ -22,6 +23,5 @@ class VirusArticleModel extends Model
     public function type() {
         return $this->belongsTo('App\Models\VirusType');
     }
-
 
 }

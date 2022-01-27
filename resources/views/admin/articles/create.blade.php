@@ -32,6 +32,11 @@
                 <label for="new_virus_type" class="mr-3">Or input type of virus here:</label>
                 <input type="text" class="form-control col-3 mr-4" id="new_virus_type" name="new_virus_type">
             </div>
+            <p>Upload image of virus: </p>
+            <div class="custom-file mb-3 ">
+                <input type="file" class="custom-file-input" accept="image/*" name="file-name" required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
             <div class="form-group">
                 <label for="location_of_origin">Location of origin:</label>
                 <input type="text" class="form-control" id="location_of_origin" placeholder="Location of origin" name="location_of_origin" required>
@@ -44,17 +49,23 @@
                 <label for="description">Description:</label>
                 <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
             </div>
+
             <div class="form-group">
-                <label for="precaution_required">Detail Description:</label>
+                <label for="detail_description">Detail Description:</label>
                 <textarea class="form-control" rows="7" id="detail_description" name="detail_description" required></textarea>
+            </div>
+            <p>Upload image detail about damage caused by virus: </p>
+            <div class="custom-file mb-3 ">
+                <input type="file" class="custom-file-input" accept="image/*" name="file-detail" required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
             <div class="form-group">
                 <label for="precaution_required">Precaution required:</label>
                 <textarea class="form-control" rows="7" id="precaution_required" name="precaution_required" required></textarea>
             </div>
-            <p>Upload image: </p>
+            <p>Upload image of precaution required: </p>
             <div class="custom-file mb-3 ">
-                <input type="file" class="custom-file-input" accept="image/*" id="customFile" name="file" required>
+                <input type="file" class="custom-file-input" accept="image/*" name="file-precaution" required>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>

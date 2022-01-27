@@ -39,12 +39,18 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $pathName = substr($request->file('file-name')->store("public/virusImage/" . $request->name ), strlen('public/'));
+        $pathDetail = substr($request->file('file-detail')->store("public/virusImage/" . $request->name ), strlen('public/'));
+        $pathPrecaution = substr($request->file('file-precaution')->store("public/virusImage/" . $request->name ), strlen('public/'));
+
         VirusArticleModel::create([
             'name' => $request->name,
             'description' => $request->description,
             'year_originated' => $request->year_originated,
-            'img' => $this->storeImage($request),
             'type_id' => $request->virus_type,
+            'img' => $pathName,
+            'img_detail' => $pathDetail,
+            'img_precaution' => $pathPrecaution
         ]);
 
         VirusDetailModel::create([
@@ -57,7 +63,6 @@ class VirusArticleController extends Controller
         ]);
 
         return $this->index();
-
     }
 
     /**
@@ -111,11 +116,5 @@ class VirusArticleController extends Controller
         $article->delete();
         $article->detail->delete();
         return $this->index();
-    }
-
-    // Name image and get path URL
-    protected function storeImage(Request $request) {
-        $path = $request->file('file')->store('public/virusImage');
-        return substr($path, strlen('public/'));
     }
 }

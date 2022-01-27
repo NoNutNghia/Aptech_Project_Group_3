@@ -11,7 +11,6 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -21,7 +20,6 @@
                             <td>{{$article->id}}</td>
                             <td style="word-wrap: break-word; max-width: 160px">{{$article->name}}</td>
                             <td style="word-wrap: break-word; max-width: 160px">{{$article->description}}</td>
-                            <td style="word-wrap: break-word; max-width: 160px">{{$article->img}}</td>
                             <td style="max-width: 160px; vertical-align: middle">
                                 <a href="{{route('articles.show', $article->id)}}" class="btn btn-success" role="button">Info <i class="fas fa-info-circle"></i></a>
                                 <a href="{{route('articles.edit', $article->id)}}" class="btn btn-warning" role="button">Edit <i class="fas fa-edit"></i></a>

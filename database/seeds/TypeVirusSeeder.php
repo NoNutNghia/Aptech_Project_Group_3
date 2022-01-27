@@ -20,17 +20,14 @@ class TypeVirusSeeder extends Seeder
                 'type_virus' => 'Enterobacteriaceae'
             ],
             [
-                'type_virus' => 'Epstein–Barr'
+                'type_virus' => 'Hepadnaviridae',
             ],
             [
-                'type_virus' => 'SARS-CoV-1'
+                'type_virus' => 'Orthopoxvirus'
             ],
             [
-                'type_virus' => 'MERS-CoV'
+                'type_virus' => 'Coronaviridae'
             ],
-            [
-                'type_virus' => 'SARS-CoV-2'
-            ]
         ]);
     }
 }

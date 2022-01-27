@@ -16,11 +16,11 @@ class CreateVirusDetailModelsTable extends Migration
         Schema::create('virus_detail_models', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('location_of_origin');
-            $table->string('detail_description');
-            $table->string('spread');
+            $table->longText('detail_description');
+            $table->longText('spread');
             $table->integer('number_of_infections');
             $table->integer('number_of_death');
-            $table->string('precaution_required');
+            $table->longText('precaution_required');
             $table->timestamps();
         });
     }

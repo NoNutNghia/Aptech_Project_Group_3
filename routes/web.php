@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'SectionController@index');
+Route::get('/vertex/{id}', 'SectionController@detailSection')->name('section.detail');
 
 // Route admin
 Route::resource('admin/articles', 'VirusArticleController')->middleware(['auth', 'can:isAdmin']);
