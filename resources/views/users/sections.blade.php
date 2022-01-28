@@ -54,8 +54,8 @@
                                 <h2 class="display-5">
                                     <a href="{{route('section.detail', $article->id)}}" class="effect-underline" style="text-decoration: none; position: relative">{{$article->name}}</a>
                                 </h2>
-                                <button type="button" class="btn btn-outline-primary btn-sm">{{$article->year_originated}}</button>
-                                <button type="button" class="btn btn-outline-primary btn-sm">{{$article->type->type_virus}}</button>
+                                <a href="{{route('section.tag', $article->year_originated)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->year_originated}} </a>
+                                <a href="{{route('section.tag', $article->type->type_virus)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->type->type_virus}} </a>
                                 <p class="mt-2">{{$article->description}}</p>
                             </div>
                         </div>
@@ -78,8 +78,8 @@
                                 <h2 class="display-5">
                                     <a href="{{route('section.detail', $article->id)}}" class="effect-underline" style="text-decoration: none; position: relative">{{$article->name}}</a>
                                 </h2>
-                                <button type="button" class="btn btn-outline-primary btn-sm">{{$article->year_originated}}</button>
-                                <button type="button" class="btn btn-outline-primary btn-sm">{{$article->type->type_virus}}</button>
+                                <a href="{{route('section.tag', $article->year_originated)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->year_originated}} </a>
+                                <a href="{{route('section.tag', $article->type->type_virus)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->type->type_virus}} </a>
                                 <p class="mt-2">{{$article->description}}</p>
                             </div>
                         </div>

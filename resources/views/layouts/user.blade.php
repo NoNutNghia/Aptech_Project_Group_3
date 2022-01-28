@@ -15,6 +15,9 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 
+
+    <!-- Chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
@@ -48,7 +51,7 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
                                 @foreach($year_wishes as $year_wish)
-                                    <a class="dropdown-item" href="#">{{$year_wish}}</a>
+                                    <a class="dropdown-item" href="{{route('section.tag', $year_wish)}}">{{$year_wish}}</a>
                                 @endforeach
                             </div>
                         </li>
@@ -60,7 +63,7 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
                                 @foreach($virusTypes as $virusType)
-                                    <a class="dropdown-item" href="#">{{$virusType->type_virus}}</a>
+                                    <a class="dropdown-item" href="{{route('section.tag', $virusType->type_virus)}}">{{$virusType->type_virus}}</a>
                                 @endforeach
                             </div>
                         </li>

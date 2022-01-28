@@ -23,7 +23,7 @@ class TypeVirusSeeder extends Seeder
                 'type_virus' => 'Hepadnaviridae',
             ],
             [
-                'type_virus' => 'Orthopoxvirus'
+                'type_virus' => 'Poxviridae'
             ],
             [
                 'type_virus' => 'Coronaviridae'

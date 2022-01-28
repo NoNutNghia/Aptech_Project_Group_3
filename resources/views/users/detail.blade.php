@@ -2,50 +2,49 @@
 
 @section('content')
     <div class="container">
-        <div>
-            {{$article->name}}
-        </div>
-        <div>
-            {{$article->description}}
-        </div>
-        <div>
-            {{$article->type->type_virus}}
-        </div>
-        <div>
-            {{$article->year_originated}}
-        </div>
         <img class="img-fluid"
              src="{{asset('storage/' . $article->img)}}"
              alt=""
              style="width: 1296px; height: 645px"
         >
-        <img class="img-fluid"
-             src="{{asset('storage/' . $article->img_precaution)}}"
-             alt=""
-             style="width: 1296px; height: 645px"
-        >
+        <div id="short_present" class=" mt-3">
+            <h3>Some information about virus:</h3>
+            <ul style="padding: 0; list-style: none">
+                <li> - Name: {{$article->name}}</li>
+                <li> - Family: {{$article->type->type_virus}}</li>
+                <li> - Location of origin: {{$article->detail->location_of_origin}}</li>
+                <li> - Year originated: {{$article->year_originated}}</li>
+            </ul>
+        </div>
+        <div id="detail" class="mt-3">
+            <h3>Detail information:</h3>
+            <p class="">{!! nl2br(e($article->detail->detail_description))!!}</p>
+        </div>
         <img class="img-fluid"
              src="{{asset('storage/' . $article->img_detail)}}"
              alt=""
              style="width: 1296px; height: 645px"
         >
-        <div>
-            {!! nl2br(e($article->detail->spread)) !!}
+        <div id="spread" class="mt-3">
+            <h3>Spread research of virus: </h3>
+            <p>{!! nl2br(e($article->detail->spread)) !!}</p>
         </div>
-        <div>
-            {{$article->detail->location_of_origin}}
+        <h3>Some data about damage caused by virus: </h3>
+        <div style="width: 100%" class="card rounded">
+            {!! $chart->container() !!}
         </div>
-        <div>
-            {!! nl2br(e($article->detail->detail_description))!!}
+        <img class="img-fluid mt-3"
+             src="{{asset('storage/' . $article->img_precaution)}}"
+             alt=""
+             style="width: 1296px; height: 645px"
+        >
+        <div id="precaution" class="mt-3">
+            <h3>Precaution required: </h3>
+            <p>{!! nl2br(e($article->detail->precaution_required)) !!}</p>
         </div>
-        <div>
-            {!! nl2br(e($article->detail->precaution_required)) !!}
-        </div>
-        <div>
-            {{$article->detail->number_of_infections}}
-        </div>
-        <div>
-            {{$article->detail->number_of_death}}
-        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+        {!! $chart->script() !!}
     </div>
+
 @endsection
