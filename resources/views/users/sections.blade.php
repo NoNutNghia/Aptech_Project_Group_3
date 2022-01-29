@@ -56,7 +56,7 @@
                                 </h2>
                                 <a href="{{route('section.tag', $article->year_originated)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->year_originated}} </a>
                                 <a href="{{route('section.tag', $article->type->type_virus)}}" class="btn btn-outline-primary btn-sm" role="button">{{$article->type->type_virus}} </a>
-                                <p class="mt-2">{{$article->description}}</p>
+                                <p class="mt-2">{!! nl2br(e($article->description)) !!}</p>
                             </div>
                         </div>
                     </div>
@@ -88,5 +88,4 @@
             </section>
         @endif
     @endforeach
-
 @endsection

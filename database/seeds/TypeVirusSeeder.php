@@ -14,19 +14,22 @@ class TypeVirusSeeder extends Seeder
     {
         VirusType::insert([
             [
-                'type_virus' => 'Ebolavirus'
+                'type_virus' => 'Coronaviridae'
             ],
             [
-                'type_virus' => 'Enterobacteriaceae'
+                'type_virus' => 'Filoviridae'
             ],
             [
-                'type_virus' => 'Hepadnaviridae',
+                'type_virus' => 'Herpesviridae',
+            ],
+            [
+                'type_virus' => 'Hepadnaviridae'
             ],
             [
                 'type_virus' => 'Poxviridae'
             ],
             [
-                'type_virus' => 'Coronaviridae'
+                'type_virus' => 'Yersiniaceae'
             ],
         ]);
     }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <img class="img-fluid"
+        <img class="img-fluid rounded"
              src="{{asset('storage/' . $article->img)}}"
              alt=""
              style="width: 1296px; height: 645px"
@@ -20,7 +20,7 @@
             <h3>Detail information:</h3>
             <p class="">{!! nl2br(e($article->detail->detail_description))!!}</p>
         </div>
-        <img class="img-fluid"
+        <img class="img-fluid rounded"
              src="{{asset('storage/' . $article->img_detail)}}"
              alt=""
              style="width: 1296px; height: 645px"
@@ -33,7 +33,7 @@
         <div style="width: 100%" class="card rounded">
             {!! $chart->container() !!}
         </div>
-        <img class="img-fluid mt-3"
+        <img class="img-fluid mt-3 rounded"
              src="{{asset('storage/' . $article->img_precaution)}}"
              alt=""
              style="width: 1296px; height: 645px"

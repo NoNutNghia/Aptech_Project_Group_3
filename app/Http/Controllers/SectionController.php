@@ -14,10 +14,9 @@ class SectionController extends Controller
     public function index() {
         $virusTypes = $this->getType();
         $slider = $this->getSlider();
-        $articles = VirusArticleModel::all();
         $yearWishes = $this->getYear();
 
-        return view('users.sections')->with('articles', $articles)
+        return view('users.sections')->with('articles', VirusArticleModel::all())
                                           ->with('virusTypes', $virusTypes)
                                           ->with('year_wishes', $yearWishes)
                                           ->with('sliders', $slider);
@@ -59,8 +58,8 @@ class SectionController extends Controller
         if(is_numeric($tag)) {
             $articles = DB::table('virus_article_models')->where('year_originated', '=', $tag)->get();
         } else {
-            $articles = DB::table('virus_article_models')->join('virus_types', 'virus_article_models.type_id', '=', 'virus_types.id')
-                ->where('virus_types.type_virus', '=', $tag)->get();
+            $param = DB::table('virus_types')->where('type_virus', '=', $tag)->get('id')->get(0)->id;
+            $articles = DB::table('virus_article_models')->where('type_id', '=', $param)->get();
         }
         $virusTypes = $this->getType();
         $yearWishes = $this->getYear();
