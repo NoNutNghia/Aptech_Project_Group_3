@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\Http\Controllers\SectionController;
 
 class RegisterController extends Controller
 {
@@ -84,7 +83,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        $sections = new SectionController;
-        return $sections->index();
+        return redirect('/vertex');
     }
 }

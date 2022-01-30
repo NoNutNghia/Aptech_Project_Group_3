@@ -27,7 +27,7 @@ class FeedbackController extends Controller
 
         $feedback->save();
 
-        return view('users.feedback');
+        return redirect('/vertex/feedback');
     }
 
     public function create() {

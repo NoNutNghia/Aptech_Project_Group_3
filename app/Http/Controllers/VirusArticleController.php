@@ -39,9 +39,9 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $pathName = substr($request->file('file-name')->store("public/virusImage/" . $request->name ), strlen('public/'));
-        $pathDetail = substr($request->file('file-detail')->store("public/virusImage/" . $request->name ), strlen('public/'));
-        $pathPrecaution = substr($request->file('file-precaution')->store("public/virusImage/" . $request->name ), strlen('public/'));
+        $pathName = substr($request->file('file-name')->store("public/" . $request->name ), strlen('public/'));
+        $pathDetail = substr($request->file('file-detail')->store("public/" . $request->name ), strlen('public/'));
+        $pathPrecaution = substr($request->file('file-precaution')->store("public/" . $request->name ), strlen('public/'));
 
         VirusArticleModel::create([
             'name' => $request->name,
@@ -62,7 +62,7 @@ class VirusArticleController extends Controller
             'precaution_required' => $request->precaution_required,
         ]);
 
-        return $this->index();
+        return redirect('/admin/articles')->with('articles', VirusArticleModel::paginate(5));
     }
 
     /**
@@ -74,7 +74,7 @@ class VirusArticleController extends Controller
     public function show($id)
     {
         $article = VirusArticleModel::find($id);
-        return $article;
+        return view('admin.articles.info')->with('article', $article);
     }
 
     /**
@@ -87,7 +87,9 @@ class VirusArticleController extends Controller
     {
 //        $article = VirusArticleModel::find($id);
 //        return $article->detail;
-        return view('admin.articles.edit')->with('article', VirusArticleModel::find($id));
+        $typeViruses = VirusType::all();
+        return view('admin.articles.edit')->with('article', VirusArticleModel::find($id))
+                                               ->with('type_viruses', $typeViruses);
     }
 
     /**
@@ -97,11 +99,40 @@ class VirusArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,VirusArticleModel $article)
+    public function update(Request $request, VirusArticleModel $article)
     {
-        $article->update($request->all());
-        $article->detail->update($request->all());
-        return $this->index();
+        $article->name = $request->name;
+        $article->type_id = $request->type_id;
+        $article->year_originated = $request->year_originated;
+        $article->description = $request->description;
+
+        if($request->hasFile('img')) {
+            $pathName = substr($request->file('img')->store("public/UpdateImage/" . $request->name), strlen('public/'));
+            $article->img = $pathName;
+        }
+
+        if($request->hasFile('img_detail')) {
+            $pathName = substr($request->file('img_detail')->store("public/UpdateImage/" . $request->name ), strlen('public/'));
+            $article->img_detail = $pathName;
+        }
+
+        if($request->hasFile('img_precaution')) {
+            $pathName = substr($request->file('img_precaution')->store("public/UpdateImage/" . $request->name ), strlen('public/'));
+            $article->img_precaution = $pathName;
+        }
+
+        $article->detail->location_of_origin = $request->location_of_origin;
+        $article->detail->spread = $request->spread;
+        $article->detail->detail_description = $request->detail_description;
+        $article->detail->number_of_infections = $request->number_of_infections;
+        $article->detail->number_of_death = $request->number_of_death;
+        $article->detail->precaution_required = $request->precaution_required;
+
+
+        $article->update();
+
+        return redirect('/admin/articles');
+
     }
 
     /**
@@ -115,6 +146,6 @@ class VirusArticleController extends Controller
         $article = VirusArticleModel::find($id);
         $article->delete();
         $article->detail->delete();
-        return $this->index();
+        return redirect('/admin/articles')->with('articles', VirusArticleModel::paginate(5));
     }
 }

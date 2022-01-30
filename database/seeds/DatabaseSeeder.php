@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeVirusSeeder::class);
         $this->call(ImageSliderSeeder::class);
         $this->call(VirusArticleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
