@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 use App\Models\VirusArticleModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class SectionController extends Controller
 {
     //
     public function index() {
+
         $virusTypes = $this->getType();
         $slider = $this->getSlider();
         $yearWishes = $this->getYear();
