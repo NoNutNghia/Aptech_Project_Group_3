@@ -54,6 +54,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:40'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
         ]);
     }
 
@@ -68,6 +70,8 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'email' => $data['email'],
+            'phone' => $data['phone']
         ]);
     }
 
@@ -83,6 +87,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        return redirect('/vertex');
+        return redirect('/home');
     }
 }

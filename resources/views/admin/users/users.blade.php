@@ -30,9 +30,9 @@
                         </tr>
                     @endforeach
                     </tbody>
-{{--                    <div>--}}
-{{--                        {{$users->links()}}--}}
-{{--                    </div>--}}
+                    <div>
+                        {{$users->links()}}
+                    </div>
                 </table>
 
             </div>

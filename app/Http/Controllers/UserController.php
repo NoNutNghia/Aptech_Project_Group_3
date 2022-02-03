@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->where('role_id', '=', 2)->get();
+        $users = DB::table('users')->where('role_id', '=', 2)->paginate(5);
         return view('admin.users.users')->with('users', $users);
     }
 
@@ -48,7 +49,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return null;
+        $user = User::find($id);
+        return view('admin.users.info')->with('user', $user);
     }
 
     /**
