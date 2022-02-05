@@ -7,6 +7,7 @@ use App\Models\VirusArticleModel;
 use App\Models\VirusDetailModel;
 
 use App\Models\VirusType;
+use Illuminate\Support\Facades\DB;
 
 class VirusArticleController extends Controller
 {
@@ -42,12 +43,21 @@ class VirusArticleController extends Controller
         $pathName = substr($request->file('file-name')->store("public/" . $request->name ), strlen('public/'));
         $pathDetail = substr($request->file('file-detail')->store("public/" . $request->name ), strlen('public/'));
         $pathPrecaution = substr($request->file('file-precaution')->store("public/" . $request->name ), strlen('public/'));
+        $virusType = $request->virus_type;
+        if($request->new_virus_type != null) {
+            if(!DB::table('virus_types')->where('type_virus', '=', $request->new_virus_type)->exists()) {
+                VirusType::insert([
+                    'type_virus' => $request->new_virus_type
+                ]);
+                $virusType = DB::table('virus_types')->selectRaw('count(*) as count_type')->get()->first()->count_type;
+            }
+        }
 
         VirusArticleModel::create([
             'name' => $request->name,
             'description' => $request->description,
             'year_originated' => $request->year_originated,
-            'type_id' => $request->virus_type,
+            'type_id' => $virusType,
             'img' => $pathName,
             'img_detail' => $pathDetail,
             'img_precaution' => $pathPrecaution
@@ -62,7 +72,7 @@ class VirusArticleController extends Controller
             'precaution_required' => $request->precaution_required,
         ]);
 
-        return redirect('/admin/articles')->with('articles', VirusArticleModel::paginate(5));
+        return redirect('/admin/articles');
     }
 
     /**
@@ -146,6 +156,6 @@ class VirusArticleController extends Controller
         $article = VirusArticleModel::find($id);
         $article->delete();
         $article->detail->delete();
-        return redirect('/admin/articles')->with('articles', VirusArticleModel::paginate(5));
+        return redirect('/admin/articles');
     }
 }
