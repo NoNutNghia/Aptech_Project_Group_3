@@ -1,0 +1,29 @@
+- Required env:
+    + PHP >= 7.2.5 (not >= 8.0)
+    + XAMPP
+    + Random IDE
+- Installation before:
+    + Create database name: 'virus_db'
+    + Run command in terminal of IDE in pj:
+        . php artisan migrate (create tables in database in follow with migrate file)
+        . php artisan db:seed (Seeding data to database)
+        . php artisan serve (Build the pj in browser)
+- Configuration .env file:
+    + Database:
+        DB_CONNECTION=mysql
+        DB_HOST=localhost
+        DB_PORT=3306
+        DB_DATABASE=virus_db
+        DB_USERNAME=root
+        DB_PASSWORD=
+    + Mail:
+        MAIL_DRIVER=smtp
+        MAIL_HOST=smtp.gmail.com
+        MAIL_PORT=587
+        MAIL_USERNAME=vertex.nghiann@gmail.com
+        MAIL_PASSWORD=vertexadmin123@
+        MAIL_ENCRYPTION=tls
+        MAIL_FROM_ADDRESS=no-reply@myemail.com
+        MAIL_FROM_NAME="Vertex"
+    Run command on terminal:
+        . php artisan config:cache
