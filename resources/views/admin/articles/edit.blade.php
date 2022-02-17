@@ -53,31 +53,47 @@
                 <textarea class="form-control" rows="10" id="precaution_required" name="precaution_required" required>{{$article->detail->precaution_required}}</textarea>
             </div>
             <p>Update image of virus: </p>
-            <div class="custom-file mb-3 ">
-                <input type="file" class="custom-file-input" accept="image/*" name="img">
-                <label class="custom-file-label" for="customFile">Choose file</label>
+            <div class="form-inline mb-4" style="flex-flow: nowrap">
+                <div class="custom-file mr-5" style="width: 50%">
+                    <input type="file" class="custom-file-input" accept="image/*" name="img" onchange="loadImagePresent(this)">
+                    <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
+                </div>
+                <div style="width: 50%">
+                    <img id="imagePresent" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
+                </div>
             </div>
-            <div >
+            <div class="mb-3">
                 <label for="image">
                     <strong>Image present:</strong>
                 </label>
                 <img src="{{asset('storage/' . $article->img)}}" alt="{{$article->name}}" width="100%">
             </div>
             <p>Update image detail about damage caused by virus: </p>
-            <div class="custom-file mb-3 ">
-                <input type="file" class="custom-file-input" accept="image/*" name="img_detail" >
-                <label class="custom-file-label" for="customFile">Choose file</label>
+            <div class="form-inline mb-4" style="flex-flow: nowrap">
+                <div class="custom-file mr-5" style="width: 50%">
+                    <input type="file" class="custom-file-input" accept="image/*" name="img_detail" onchange="loadImageDetail(this)">
+                    <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
+                </div>
+                <div style="width: 50%">
+                    <img id="imageDetail" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
+                </div>
             </div>
-            <div >
+            <div class="mb-3">
                 <label for="image_detail">
                     <strong>Detail image:</strong>
                 </label>
+
                 <img src="{{asset('storage/' . $article->img_detail)}}" alt="{{$article->name}}" width="100%">
             </div>
             <p>Update image of precaution required: </p>
-            <div class="custom-file mb-3 ">
-                <input type="file" class="custom-file-input" accept="image/*" name="img_precaution" >
-                <label class="custom-file-label" for="customFile">Choose file</label>
+            <div class="form-inline mb-4" style="flex-flow: nowrap">
+                <div class="custom-file mr-5" style="width: 50%">
+                    <input type="file" class="custom-file-input" accept="image/*" name="img_precaution" onchange="loadImagePrecaution(this)">
+                    <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
+                </div>
+                <div style="width: 50%">
+                    <img id="imagePrecaution" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="image_precaution">
@@ -88,5 +104,35 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+    <script>
+        function loadImagePresent(input) {
+            let id = '#imagePresent'
+            loadImage(input, id)
+        }
+
+        function loadImageDetail(input) {
+            let id = '#imageDetail'
+            loadImage(input, id)
+        }
+
+        function loadImagePrecaution(input) {
+            let id = '#imagePrecaution'
+            loadImage(input, id)
+        }
+
+        function loadImage(input, id) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(id)
+                        .attr('src', e.target.result)
+                }
+                reader.readAsDataURL(input.files[0])
+            }
+        }
+
+
+    </script>
 
 @endsection

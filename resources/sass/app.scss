@@ -89,3 +89,12 @@ a.effect-underline:hover:after {
     transform: scale(1);
 }
 
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
+
+
+
