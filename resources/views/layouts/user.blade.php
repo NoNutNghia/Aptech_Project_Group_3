@@ -33,12 +33,16 @@
     </style>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+{{--    <link rel="stylesheet" href="{{ asset('fonts/fontawesome-free-5.15.4-web/css/all.min.css') }}">--}}
 </head>
 <body >
     <div id="app" class="d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('section.index') }}">
+                <a class="navbar-brand " href="{{ route('section.index') }}">
+                    <i class="fas fa-briefcase-medical "></i>
                     Vertex
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,6 +55,7 @@
                         <li class="nav-item dropdown">
                             <a class="btn dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="box-shadow: none">
+                                <i class="fas fa-calendar-times mr-0"></i>
                                 Year-wish listing
                             </a>
 
@@ -63,6 +68,7 @@
                         <li class="nav-item dropdown">
                             <a class="btn dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="box-shadow: none">
+                                <i class="fas fa-viruses mr-0"></i>
                                 Virus Types
                             </a>
 
@@ -73,10 +79,16 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('feedback.create')}}">Feedback</a>
+                            <a class="nav-link" href="{{route('feedback.create')}}">
+                                <i class="fas fa-comment mr-0"></i>
+                                Feedback
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contactUs">Contact Us</a>
+                            <a class="nav-link" href="#contactUs">
+                                <i class="fas fa-globe mr-0"></i>
+                                Contact Us
+                            </a>
                         </li>
 
                     </ul>
@@ -116,7 +128,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4" style="position: relative;">
             @yield('content')
         </main>
 

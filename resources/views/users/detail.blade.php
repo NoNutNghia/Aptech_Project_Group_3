@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="container">
+        <div class="jumbotron">
+            <h1>{{$article->name}}</h1>
+            <a href="{{route('section.tag', $article->year_originated)}}"
+               class="btn btn-outline-primary btn-sm"
+               role="button">{{$article->year_originated}} </a>
+            <a href="{{route('section.tag', $article->type->type_virus)}}"
+               class="btn btn-outline-primary btn-sm"
+               role="button">{{$article->type->type_virus}} </a>
+        </div>
         <img class="img-fluid rounded"
              src="{{asset('storage/' . $article->img)}}"
              alt=""

@@ -18,7 +18,7 @@ class SectionController extends Controller
         $slider = $this->getSlider();
         $yearWishes = $this->getYear();
 
-        return view('users.sections')->with('articles', VirusArticleModel::all())
+        return view('users.sections')->with('articles', VirusArticleModel::paginate(8))
                                           ->with('virusTypes', $virusTypes)
                                           ->with('year_wishes', $yearWishes)
                                           ->with('sliders', $slider);

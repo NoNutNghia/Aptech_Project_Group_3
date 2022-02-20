@@ -27,7 +27,6 @@ Route::get('/vertex/feedback', 'FeedbackController@create')->middleware(['auth',
 Route::post('/vertex/feedback', 'FeedbackController@store')->middleware(['auth', 'can:isUser'])->name('feedback.store');
 
 
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
