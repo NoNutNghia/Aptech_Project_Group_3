@@ -56,7 +56,6 @@
             <div class="custom-file mb-3 ">
                 <input type="file" class="custom-file-input" accept="image/*" name="img">
                 <label class="custom-file-label" for="customFile">Choose file</label>
-                <img src="" alt="" width="100" height="100" style="background-color: red;">
             </div>
             <div >
                 <label for="image">
