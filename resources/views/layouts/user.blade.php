@@ -130,6 +130,9 @@
         </nav>
         <main class="py-4" style="position: relative;">
             @yield('content')
+            <a id="back-to-top" href="#" class="btn btn-outline-primary btn-lg back-to-top" role="button">
+                <i class="fas fa-chevron-up"></i>
+            </a>
         </main>
 
         <!-- Footer-->
