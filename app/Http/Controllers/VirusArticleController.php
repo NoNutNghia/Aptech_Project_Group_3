@@ -141,7 +141,9 @@ class VirusArticleController extends Controller
 
         $article->update();
 
-        return redirect('/admin/articles');
+        return redirect()->route('articles.show', $article->id);
+
+//        return redirect('/admin/articles');
 
     }
 
