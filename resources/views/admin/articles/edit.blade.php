@@ -142,7 +142,6 @@
             const image = "#" + siblings[1].children[0].id
 
             $(image).removeAttr('src')
-            console.log(siblings)
         }
     </script>
 
