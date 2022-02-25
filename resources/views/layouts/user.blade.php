@@ -217,7 +217,7 @@
                             <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
                         </div>
                         <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7460.7190642889855!2d105.99077986628697!3d20.776737760880653!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1642786770897!5m2!1sen!2s"
                                 width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy">

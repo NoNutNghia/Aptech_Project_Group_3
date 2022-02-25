@@ -87,5 +87,4 @@ class SectionController extends Controller
             ->backgroundcolor($fillColors);
         return $usersChart;
     }
-
 }

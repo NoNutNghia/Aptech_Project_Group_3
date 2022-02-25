@@ -2,8 +2,6 @@
 
 @section('content')
     @foreach($articles as $article)
-        <h2 style="color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 80px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;">
-            {{$article->year_originated}}</h2>
         <section>
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
@@ -26,4 +24,7 @@
             </div>
         </section>
     @endforeach
+{{--    <div class="d-flex justify-content-center">--}}
+{{--        {{$articles->links()}}--}}
+{{--    </div>--}}
 @endsection
