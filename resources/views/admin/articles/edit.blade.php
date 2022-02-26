@@ -55,12 +55,13 @@
             <p>Update image of virus: </p>
             <div class="form-inline mb-4" style="flex-flow: nowrap">
                 <div class="custom-file mr-5" style="width: 50%">
-                    <input type="file" class="custom-file-input" accept="image/*" name="img" onchange="loadImagePresent(this)">
+                    <input id="inputImagePresent" type="file" class="custom-file-input" accept="image/*" name="img" onchange="loadImage(this)">
                     <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%" class="mr-2">
                     <img id="imagePresent" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
                 </div>
+                <a style="display: none" role="button" class="btn btn-danger" onclick="removeImage(this)">Delete</a>
             </div>
             <div class="mb-3">
                 <label for="image">
@@ -71,12 +72,13 @@
             <p>Update image detail about damage caused by virus: </p>
             <div class="form-inline mb-4" style="flex-flow: nowrap">
                 <div class="custom-file mr-5" style="width: 50%">
-                    <input type="file" class="custom-file-input" accept="image/*" name="img_detail" onchange="loadImageDetail(this)">
+                    <input type="file" class="custom-file-input" accept="image/*" name="img_detail" onchange="loadImage(this)">
                     <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%" class="mr-2">
                     <img id="imageDetail" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
                 </div>
+                <a style="display: none" role="button" class="btn btn-danger" onclick="removeImage(this)">Delete</a>
             </div>
             <div class="mb-3">
                 <label for="image_detail">
@@ -86,14 +88,15 @@
                 <img src="{{asset('storage/' . $article->img_detail)}}" alt="{{$article->name}}" width="100%">
             </div>
             <p>Update image of precaution required: </p>
-            <div class="form-inline mb-4" style="flex-flow: nowrap">
+            <div class="form-inline mb-4" style="flex-flow: nowrap" >
                 <div class="custom-file mr-5" style="width: 50%">
-                    <input type="file" class="custom-file-input" accept="image/*" name="img_precaution" onchange="loadImagePrecaution(this)">
+                    <input type="file" class="custom-file-input" accept="image/*" name="img_precaution" onchange="loadImage(this)">
                     <label class="custom-file-label" style="justify-content: flex-start" for="customFile">Choose file</label>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%" class="mr-2">
                     <img id="imagePrecaution" class="img-fluid mx-auto rounded border" style="width: 100%; height: 100%;" src="*" alt="Upload image...">
                 </div>
+                <a style="display: none" role="button" class="btn btn-danger" onclick="removeImage(this)">Delete</a>
             </div>
             <div class="mb-3">
                 <label for="image_precaution">
@@ -105,23 +108,11 @@
         </form>
     </div>
     <script>
-        function loadImagePresent(input) {
-            let id = '#imagePresent'
-            loadImage(input, id)
-        }
-
-        function loadImageDetail(input) {
-            let id = '#imageDetail'
-            loadImage(input, id)
-        }
-
-        function loadImagePrecaution(input) {
-            let id = '#imagePrecaution'
-            loadImage(input, id)
-        }
-
-        function loadImage(input, id) {
+        function loadImage(input) {
+            const parent = $(input).parent()
+            let id = "#" + parent.next().children("img")[0].id
             if (input.files && input.files[0]) {
+
                 let reader = new FileReader();
 
                 reader.onload = function (e) {
@@ -130,9 +121,28 @@
                 }
                 reader.readAsDataURL(input.files[0])
             }
+            parent.siblings("a")[0].style.display = "inline-block"
         }
 
+        function removeImage(input) {
+            $(input).css("display", "none")
 
+            // Get input and image inside div tag
+            const siblings = $(input).siblings("div")
+
+            const inputFile = siblings[0].children[0]
+
+            // Reset value input file and label
+            inputFile.value = ""
+            const label = inputFile.nextElementSibling
+            label.classList.remove("selected")
+            label.innerHTML = "Choose file"
+
+            // Delete image preview
+            const image = "#" + siblings[1].children[0].id
+
+            $(image).removeAttr('src')
+        }
     </script>
 
 @endsection

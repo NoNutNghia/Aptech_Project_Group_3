@@ -40,9 +40,9 @@ class VirusArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $pathName = substr($request->file('file-name')->store("public/" . $request->name ), strlen('public/'));
-        $pathDetail = substr($request->file('file-detail')->store("public/" . $request->name ), strlen('public/'));
-        $pathPrecaution = substr($request->file('file-precaution')->store("public/" . $request->name ), strlen('public/'));
+        $pathName = substr($request->file('img')->store("public/" . $request->name ), strlen('public/'));
+        $pathDetail = substr($request->file('img_detail')->store("public/" . $request->name ), strlen('public/'));
+        $pathPrecaution = substr($request->file('img_precaution')->store("public/" . $request->name ), strlen('public/'));
         $virusType = $request->virus_type;
         if($request->new_virus_type != null) {
             if(!DB::table('virus_types')->where('type_virus', '=', $request->new_virus_type)->exists()) {
@@ -72,7 +72,9 @@ class VirusArticleController extends Controller
             'precaution_required' => $request->precaution_required,
         ]);
 
-        return redirect('/admin/articles');
+        $info = DB::table('virus_article_models')->selectRaw('count(*) as count')->get()->first()->count;
+
+        return redirect()->route('articles.show', $info);
     }
 
     /**
@@ -138,10 +140,9 @@ class VirusArticleController extends Controller
         $article->detail->number_of_death = $request->number_of_death;
         $article->detail->precaution_required = $request->precaution_required;
 
-
         $article->update();
 
-        return redirect('/admin/articles');
+        return redirect()->route('articles.show', $article->id);
 
     }
 
