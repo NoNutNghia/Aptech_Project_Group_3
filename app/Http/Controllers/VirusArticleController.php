@@ -49,7 +49,7 @@ class VirusArticleController extends Controller
                 VirusType::insert([
                     'type_virus' => $request->new_virus_type
                 ]);
-                $virusType = DB::table('virus_types')->selectRaw('count(*) as count_type')->get()->first()->count_type;
+                $virusType = DB::table('virus_types')->count();
             }
         }
 
@@ -72,9 +72,10 @@ class VirusArticleController extends Controller
             'precaution_required' => $request->precaution_required,
         ]);
 
-        $info = DB::table('virus_article_models')->selectRaw('count(*) as count')->get()->first()->count;
+        $info = DB::table('virus_article_models')->count();
 
         return redirect()->route('articles.show', $info);
+//        return $request;
     }
 
     /**
@@ -111,8 +112,10 @@ class VirusArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VirusArticleModel $article)
+    public function update(Request $request, $id)
     {
+        $article = VirusArticleModel::find($id);
+        $articleDetail = VirusDetailModel::find($id);
         $article->name = $request->name;
         $article->type_id = $request->type_id;
         $article->year_originated = $request->year_originated;
@@ -133,16 +136,17 @@ class VirusArticleController extends Controller
             $article->img_precaution = $pathName;
         }
 
-        $article->detail->location_of_origin = $request->location_of_origin;
-        $article->detail->spread = $request->spread;
-        $article->detail->detail_description = $request->detail_description;
-        $article->detail->number_of_infections = $request->number_of_infections;
-        $article->detail->number_of_death = $request->number_of_death;
-        $article->detail->precaution_required = $request->precaution_required;
+        $articleDetail->location_of_origin = $request->location_of_origin;
+        $articleDetail->spread = $request->spread;
+        $articleDetail->detail_description = $request->detail_description;
+        $articleDetail->number_of_infections = $request->number_of_infections;
+        $articleDetail->number_of_death = $request->number_of_death;
+        $articleDetail->precaution_required = $request->precaution_required;
 
-        $article->update();
+        $article->save();
+        $articleDetail->save();
 
-        return redirect()->route('articles.show', $article->id);
+        return redirect()->route('articles.show', $id);
 
     }
 

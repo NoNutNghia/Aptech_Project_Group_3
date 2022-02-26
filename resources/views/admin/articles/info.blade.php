@@ -82,6 +82,6 @@
             </label>
             <img src="{{asset('storage/' . $article->img_precaution)}}" alt="{{$article->name}}" width="100%">
         </div>
-
+        <a href="{{route("articles.index")}}" role="button" class="btn btn-info mt-2">OK</a>
     </div>
 @endsection
