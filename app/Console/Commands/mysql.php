@@ -45,7 +45,7 @@ class mysql extends Command
         config(["database.connections.mysql.database" => null]);
 
         $query = "CREATE DATABASE IF NOT EXISTS $schemaName CHARACTER SET $charset COLLATE $collation;";
-
+        DB::statement("DROP DATABASE IF EXISTS $schemaName");
         DB::statement($query);
 
         config(["database.connections.mysql.database" => $schemaName]);

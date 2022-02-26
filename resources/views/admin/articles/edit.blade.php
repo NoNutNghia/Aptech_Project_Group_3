@@ -14,11 +14,11 @@
             </div>
             <div class="form-inline justify-content-lg-between mb-4" >
                 <label for="year_originated">Year originated:</label>
-                <input type="number" class="form-control " style="width: 100px" max="2022" id="year_originated" name="year_originated" value="{{$article->year_originated}}" required>
+                <input type="number" class="form-control " style="width: 100px" max="2022" name="year_originated" value="{{$article->year_originated}}" required>
                 <label for="number_of_infections">Number of Infections (At this time):</label>
-                <input type="number" class="form-control" id="number_of_infections" name="number_of_infections" value="{{$article->detail->number_of_infections}}" required>
+                <input type="number" class="form-control" name="number_of_infections" value="{{$article->detail->number_of_infections}}" required>
                 <label for="number_of_death">Number of Death (At this time):</label>
-                <input type="number" class="form-control " id="number_of_death" name="number_of_death" value="{{$article->detail->number_of_death}}" required>
+                <input type="number" class="form-control" name="number_of_death" value="{{$article->detail->number_of_death}}" required>
             </div>
             <div class="form-inline mb-4">
                 <label for="type_id" class="mr-3">Type of virus: </label>
