@@ -23,6 +23,12 @@
     + Run command on terminal:
         . php artisan config:cache
 
+- Create symbolic link:
+    . cd public
+    . rm storage
+    . cd ..
+    . php artisan storage:link
+
 - Installation database:
     + Start apache and mysql in xampp
     + Run command on terminal step by step:

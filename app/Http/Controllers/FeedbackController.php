@@ -29,6 +29,7 @@ class FeedbackController extends Controller
 
         $feedback->save();
 
+        toastr()->success("Your feedback send successfully!");
         return redirect('/vertex/feedback');
     }
 

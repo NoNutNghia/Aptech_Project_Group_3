@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <h2>EDIT ARTICLE VIRUS FORM</h2>
         <p>You must fill out all input about the article below:</p>

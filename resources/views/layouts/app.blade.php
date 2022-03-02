@@ -19,12 +19,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    @toastr_css
 </head>
 <body>
+    @jquery
+    @toastr_js
+    @toastr_render
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="#">
+                    <i class="fas fa-tools"></i>
                     Vertex Admin
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,13 +40,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('articles.index')}}">Articles</a>
+                            <a class="nav-link" href="{{route('articles.index')}}">
+                                <i class="far fa-newspaper"></i>
+                                Articles
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('users.index')}}">Users</a>
+                            <a class="nav-link" href="{{route('users.index')}}">
+                                <i class="fas fa-users"></i>
+                                Users
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('feedback.index')}}">Feedback</a>
+                            <a class="nav-link" href="{{route('feedback.index')}}">
+                                <i class="fas fa-comment-alt"></i>
+                                Feedback
+                            </a>
                         </li>
                     </ul>
 

@@ -74,6 +74,7 @@ class VirusArticleController extends Controller
 
         $info = DB::table('virus_article_models')->count();
 
+        toastr()->success("Success");
         return redirect()->route('articles.show', $info);
 //        return $request;
     }
@@ -146,6 +147,7 @@ class VirusArticleController extends Controller
         $article->save();
         $articleDetail->save();
 
+        toastr()->success("Success");
         return redirect()->route('articles.show', $id);
 
     }
