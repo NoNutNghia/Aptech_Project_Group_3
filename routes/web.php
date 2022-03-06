@@ -20,9 +20,11 @@ Route::get('/vertex/tag/{tag}', 'SectionController@getSection')->name('section.t
 
 // Route admin
 Route::resource('admin/articles', 'VirusArticleController')->middleware(['auth', 'can:isAdmin']);
-Route::get('admin/articles/search', 'VirusArticleController@search')->middleware(['auth', 'can:isAdmin'])->name('articles.search');
+Route::get('admin/search/articles', 'VirusArticleController@search')->middleware(['auth', 'can:isAdmin'])->name('articles.search');
 Route::resource('admin/users', 'UserController')->middleware(['auth', 'can:isAdmin']);
+Route::get('admin/search/users', 'UserController@search')->middleware(['auth', 'can:isAdmin'])->name('users.search');
 Route::get('admin/feedback', 'FeedbackController@index')->middleware(['auth', 'can:isAdmin'])->name('feedback.index');
+Route::get('admin/search/feedback', 'FeedbackController@search')->middleware(['auth', 'can:isAdmin'])->name('feedback.search');
 
 
 // Route user

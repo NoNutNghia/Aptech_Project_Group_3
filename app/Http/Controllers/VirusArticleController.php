@@ -167,6 +167,11 @@ class VirusArticleController extends Controller
     }
 
     public function search(Request $request) {
+        $articles = DB::table('virus_article_models')->where('name', 'LIKE', '%' . $request->search . '%')
+                                                           ->paginate(5);
+        if($articles) {
+            return view('admin.articles.articles')->with('articles', $articles);
+        }
 
     }
 }

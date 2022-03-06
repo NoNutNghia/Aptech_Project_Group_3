@@ -45,7 +45,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
         {!! $chart->script() !!}
-        <hr class="hr-text mt-6" data-content="RELATED VIRUSES SECTIONS">
+        <hr class="hr-text mt-6" data-content="RELATED SECTIONS">
         @if($related->isNotEmpty())
             @foreach($related as $related)
                 <section>

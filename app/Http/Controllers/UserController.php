@@ -86,4 +86,12 @@ class UserController extends Controller
     {
         return null;
     }
+
+    public function search(Request $request) {
+        $users = DB::table('users')->where('username', 'LIKE', '%' . $request->search . '%')
+                                        ->whereNotIn('role_id', [1])
+                                        ->paginate(5);
+
+        return view('admin.users.users')->with('users', $users);
+    }
 }
