@@ -4,15 +4,16 @@
     <div class="container">
         <div class="info-table">
             <a href="{{route('articles.create')}}" class="btn btn-info mb-4" role="button">Create article</a>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" style="text-align: center">
                     <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                    </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach($articles as $article)

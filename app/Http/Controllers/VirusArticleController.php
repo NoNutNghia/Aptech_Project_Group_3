@@ -165,4 +165,8 @@ class VirusArticleController extends Controller
         $article->detail->delete();
         return redirect('/admin/articles');
     }
+
+    public function search(Request $request) {
+
+    }
 }

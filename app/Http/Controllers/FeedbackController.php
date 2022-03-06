@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\User;
-use Input;
+use Symfony\Component\Console\Input\Input;
 use function PHPUnit\Framework\isEmpty;
 
 class FeedbackController extends Controller

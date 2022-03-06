@@ -18,7 +18,7 @@ class SectionController extends Controller
         $slider = $this->getSlider();
         $yearWishes = $this->getYear();
 
-        return view('users.sections')->with('articles', VirusArticleModel::paginate(8))
+        return view('users.sections')->with('articles', VirusArticleModel::paginate(5))
                                           ->with('virusTypes', $virusTypes)
                                           ->with('year_wishes', $yearWishes)
                                           ->with('sliders', $slider);
@@ -28,6 +28,9 @@ class SectionController extends Controller
 
     public function detailSection($id) {
         $article = VirusArticleModel::find($id);
+        $related = DB::table('virus_article_models')->where('type_id', '=', $article->type_id)
+                                                          ->whereNotIn('id', [$article->id])
+                                                          ->get();
         $virusTypes = $this->getType();
         $slider = $this->getSlider();
         $barChart = $this->getBarChart($article);
@@ -36,7 +39,19 @@ class SectionController extends Controller
                                         ->with('sliders', $slider)
                                         ->with('year_wishes', $yearWishes)
                                         ->with('virusTypes', $virusTypes)
-                                        ->with('chart', $barChart);
+                                        ->with('chart', $barChart)
+                                        ->with('related', $related);
+    }
+
+    public function searchBar(Request $request) {
+        $articles = DB::table('virus_article_models')->where('name', 'like', '%'.$request->search.'%')->get();
+        $virusTypes = $this->getType();
+        $yearWishes = $this->getYear();
+        return view('users.tag')->with('articles', $articles)
+            ->with('year_wishes', $yearWishes)
+            ->with('virusTypes', $virusTypes)
+            ->with('search', $request->search);
+
     }
 
     public function getSlider() {

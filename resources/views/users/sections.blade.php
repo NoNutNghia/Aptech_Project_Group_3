@@ -1,45 +1,46 @@
 @extends('layouts.user')
 
 @section('content')
-        <video autoplay loop muted id="myVideo">
-            <source
-                src="{{asset('storage/Covid-19 Novel Corona Virus Animated background .mp4')}}"
-                type="video/mp4">
-        </video>
+    <video autoplay loop muted id="myVideo">
+        <source
+            src="{{asset('storage/Covid-19 Novel Corona Virus Animated background .mp4')}}"
+            type="video/mp4">
+    </video>
         {{--    Slider images--}}
-        <div id="carousel" class="carousel slide" data-ride="carousel" style="margin: 0 80px">
-            <div class="carousel-inner">
-                @foreach($sliders as $slider)
-                    @if($loop->index == 0)
-                        <div class="carousel-item active">
-                            <img class="img-fluid"
-                                 src="{{asset('storage/' . $slider->img)}}"
-                                 alt=""
-                                 style="width: 1296px; height: 645px"
-                            >
-                        </div>
-                    @else
-                        <div class="carousel-item ">
-                            <img class="img-fluid"
-                                 src="{{asset('storage/' . $slider->img)}}"
-                                 alt=""
-                                 style="width: 1296px; height: 645px"
-                            >
-                        </div>
-                    @endif
-                @endforeach
+    <div id="carousel" class="carousel slide" data-ride="carousel" style="margin: 0 80px">
+        <div class="carousel-inner">
+            @foreach($sliders as $slider)
+                @if($loop->index == 0)
+                    <div class="carousel-item active">
+                        <img class="img-fluid"
+                             src="{{asset('storage/' . $slider->img)}}"
+                             alt=""
+                             style="width: 1296px; height: 645px"
+                        >
+                    </div>
+                @else
+                    <div class="carousel-item ">
+                        <img class="img-fluid"
+                             src="{{asset('storage/' . $slider->img)}}"
+                             alt=""
+                             style="width: 1296px; height: 645px"
+                        >
+                    </div>
+                @endif
+            @endforeach
 
-            </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        {{--                End slider image--}}
+        </div>
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {{--                End slider image--}}
+    <div class="container">
         <hr class="hr-text mt-6" data-content="SOME KINDS OF VIRUSES">
         @foreach($articles as $article)
             @if($loop->index % 2 === 0)
@@ -107,4 +108,5 @@
         <div class="d-flex justify-content-center">
             {{$articles->links()}}
         </div>
+    </div>
 @endsection

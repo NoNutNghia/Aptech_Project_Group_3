@@ -95,6 +95,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+                    <form class="form-inline" method="GET" action="{{route('section.search')}}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search" required>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest

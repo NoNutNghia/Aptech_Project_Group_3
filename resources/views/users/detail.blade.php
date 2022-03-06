@@ -2,15 +2,6 @@
 
 @section('content')
     <div class="container">
-        <div class="jumbotron">
-            <h1>{{$article->name}}</h1>
-            <a href="{{route('section.tag', $article->year_originated)}}"
-               class="btn btn-outline-primary btn-sm"
-               role="button">{{$article->year_originated}} </a>
-            <a href="{{route('section.tag', $article->type->type_virus)}}"
-               class="btn btn-outline-primary btn-sm"
-               role="button">{{$article->type->type_virus}} </a>
-        </div>
         <img class="img-fluid rounded"
              src="{{asset('storage/' . $article->img)}}"
              alt=""
@@ -54,6 +45,36 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
         {!! $chart->script() !!}
+        <hr class="hr-text mt-6" data-content="RELATED VIRUSES SECTIONS">
+        @if($related->isNotEmpty())
+            @foreach($related as $related)
+                <section>
+                    <div class="container px-5">
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-lg-6 order-lg-2">
+                                <div class="p-5 hovereffect">
+                                    <a href="{{route('section.detail', $related->id)}}">
+                                        <img class="img-fluid rounded" src="{{asset('storage/' . $related->img )}}" alt="{{$related->name}}" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 order-lg-1">
+                                <div class="p-5">
+                                    <h2 class="display-5">
+                                        <a href="{{route('section.detail', $related->id)}}" class="effect-underline" style="text-decoration: none; position: relative">{{$related->name}}</a>
+                                    </h2>
+                                    <p class="mt-2">{{$related->description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endforeach
+        @else
+            <div class="container">
+                <h2 class="justify-content-center">No any suggestions</h2>
+            </div>
+        @endif
     </div>
 
 @endsection
