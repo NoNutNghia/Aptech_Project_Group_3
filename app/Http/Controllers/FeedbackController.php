@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\User;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Input\Input;
-use function PHPUnit\Framework\isEmpty;
 
 class FeedbackController extends Controller
 {
@@ -39,11 +37,10 @@ class FeedbackController extends Controller
     }
 
     public function search(Request $request) {
-        $users = DB::table('users')->where('username', 'LIKE', '%' . $request->search . '%')
+        $users = User::where('username', 'LIKE', '%' . $request->search . '%')
             ->whereNotIn('role_id', [1])
             ->get();
 
-//        return view('admin.feedback.feedback')->with('users', $users);
-        return $users;
+        return view('admin.feedback.search')->with('users', $users);
     }
 }

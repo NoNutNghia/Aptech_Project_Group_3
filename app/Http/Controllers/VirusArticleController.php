@@ -147,7 +147,7 @@ class VirusArticleController extends Controller
         $article->save();
         $articleDetail->save();
 
-        toastr()->success("Success");
+        toastr()->success("Update successfully");
         return redirect()->route('articles.show', $id);
 
     }

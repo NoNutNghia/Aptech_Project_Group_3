@@ -28,13 +28,6 @@
                                 <td style="word-wrap: break-word; max-width: 160px">{{$user->username}}</td>
                                 <td style="max-width: 160px; vertical-align: middle">
                                     <a href="{{route('users.show', $user->id)}}" class="btn btn-success" role="button">Info <i class="fas fa-info-circle"></i></a>
-                                    <form action="{{route('users.destroy', $user->id)}}" class="d-inline" method="POST">
-                                        @csrf
-                                        @method("DELETE")
-                                        <button class="btn btn-danger">
-                                            Delete <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                         @endforeach

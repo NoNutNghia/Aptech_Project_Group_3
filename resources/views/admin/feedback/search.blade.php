@@ -10,12 +10,10 @@
                 </button>
             </form>
         </div>
-        @if(!$users->isNotEmpty())
-            <h2>No feedback from user</h2>
-        @else
+        @if($users->isNotEmpty())
             @foreach($users as $user)
                 <div class="mt-3">
-                <h4>{{$user->username}} feedback:</h4>
+                    <h4>{{$user->username}} feedback:</h4>
                     <ul class="list-group list-group-flush">
                         @foreach($user->feedback as $feedback)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -26,6 +24,10 @@
                     </ul>
                 </div>
             @endforeach
+        @else
+            <div style="text-align: center">
+                <h2>Can not find user</h2>
+            </div>
         @endif
     </div>
 @endsection
