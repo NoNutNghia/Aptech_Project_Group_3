@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description" name="description" required>{{$article->description}}</textarea>
+                <textarea class="form-control" rows="7" id="description" name="description" required>{{$article->description}}</textarea>
             </div>
             <div class="form-group">
                 <label for="spread">Way to spread:</label>

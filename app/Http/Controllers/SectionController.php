@@ -23,11 +23,12 @@ class SectionController extends Controller
                                           ->with('year_wishes', $yearWishes)
                                           ->with('sliders', $slider);
 //        return $articles;
+//        return $yearWishes;
 
     }
 
     public function detailSection($id) {
-        $article = VirusArticleModel::find($id);
+        $article = VirusArticleModel::findOrFail($id);
         $related = DB::table('virus_article_models')->where('type_id', '=', $article->type_id)
                                                           ->whereNotIn('id', [$article->id])
                                                           ->get();
@@ -41,6 +42,7 @@ class SectionController extends Controller
                                         ->with('virusTypes', $virusTypes)
                                         ->with('chart', $barChart)
                                         ->with('related', $related);
+
     }
 
     public function searchBar(Request $request) {
@@ -61,8 +63,8 @@ class SectionController extends Controller
     public function getYear() {
         $articles = VirusArticleModel::all();
         return $articles->unique('year_originated')->map(function ($yearWish, $key) {
-                    return $yearWish->year_originated;
-                })->sortByDesc(function ($yearWish, $key){
+                    return $yearWish->year_originated - $yearWish->year_originated % 100;
+                })->unique()->sortByDesc(function ($yearWish, $key){
                     return $yearWish;
                 })->values()->all();
     }
@@ -73,7 +75,7 @@ class SectionController extends Controller
 
     public function getSection($tag) {
         if(is_numeric($tag)) {
-            $articles = DB::table('virus_article_models')->where('year_originated', '=', $tag)->get();
+            $articles = DB::table('virus_article_models')->whereBetween('year_originated', [$tag, $tag + 99])->get();
         } else {
             $param = DB::table('virus_types')->where('type_virus', '=', $tag)->get('id')->get(0)->id;
             $articles = DB::table('virus_article_models')->where('type_id', '=', $param)->get();

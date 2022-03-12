@@ -32,6 +32,10 @@
                 <label for="new_virus_type" class="mr-3">Or input type of virus here:</label>
                 <input type="text" class="form-control col-3 mr-4" id="new_virus_type" name="new_virus_type">
             </div>
+            <div class="form-group">
+                <label for="location_of_origin">Location of origin:</label>
+                <input type="text" class="form-control" id="location_of_origin" placeholder="Location of origin" name="location_of_origin" required>
+            </div>
             <p>Upload image of virus: </p>
             <div class="form-inline mb-4" style="flex-flow: nowrap">
                 <div class="custom-file mr-5" style="width: 50%">
@@ -44,16 +48,12 @@
                 <a style="display: none" role="button" class="btn btn-danger ml-2" onclick="removeImage(this)">Delete</a>
             </div>
             <div class="form-group">
-                <label for="location_of_origin">Location of origin:</label>
-                <input type="text" class="form-control" id="location_of_origin" placeholder="Location of origin" name="location_of_origin" required>
+                <label for="description">Description:</label>
+                <textarea class="form-control" rows="7" id="description" name="description" required></textarea>
             </div>
             <div class="form-group">
                 <label for="spread">Way to spread:</label>
-                <textarea class="form-control" rows="3" id="spread" name="spread" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
+                <textarea class="form-control" rows="7" id="spread" name="spread" required></textarea>
             </div>
 
             <div class="form-group">

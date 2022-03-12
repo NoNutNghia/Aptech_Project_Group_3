@@ -1,9 +1,11 @@
-- Required env:
+- Require env:
     + PHP >= 7.2.5 (not >= 8.0)
     + XAMPP
     + Favourite Text Editor or IDE
 
-- Configuration .env file:
+***** All things to do here, you must do it step by step *****
+
+- Configure .env file:
     + Database:
         DB_CONNECTION=mysql
         DB_HOST=localhost
@@ -29,7 +31,7 @@
     . cd ..
     . php artisan storage:link
 
-- Installation database:
+- Install database:
     + Start apache and mysql in xampp
     + Run command on terminal step by step:
         (This cmd will remove the database name 'virus_db' in your database list, so be take care your data)
@@ -37,6 +39,7 @@
         . php artisan migrate
         . php artisan db:seed
 
-- Command: "php artisan serve" to start the website on browser
+- Build pj in your pc:
+    . php artisan serve
 
 

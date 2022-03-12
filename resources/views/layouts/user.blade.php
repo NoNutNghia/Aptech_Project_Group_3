@@ -12,12 +12,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 
 
     <!-- Chart -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
@@ -44,7 +46,7 @@
             <div class="container">
                 <a class="navbar-brand " href="{{ route('section.index') }}">
                     <i class="fas fa-briefcase-medical "></i>
-                    Vertex
+                    <span> Vertex </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,7 +64,11 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 7px">
                                 @foreach($year_wishes as $year_wish)
-                                    <a class="dropdown-item" href="{{route('section.tag', $year_wish)}}">{{$year_wish}}</a>
+                                    @if($loop->first)
+                                        <a class="dropdown-item" href="{{route('section.tag', $year_wish)}}">{{$year_wish}} - now</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{route('section.tag', $year_wish)}}">{{$year_wish}} - {{$year_wish + 99}}</a>
+                                    @endif
                                 @endforeach
                             </div>
                         </li>
@@ -189,7 +195,7 @@
                                 <i class="fas fa-gem me-3"></i> Vertex
                             </h6>
                             <p>
-                                The website provide information about dangerous virus in the world!
+                                The website provide information about dangerous viruses and bacterias in the world!
                             </p>
                         </div>
                         <!-- Grid column -->

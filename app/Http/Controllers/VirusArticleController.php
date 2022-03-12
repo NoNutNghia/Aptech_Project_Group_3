@@ -87,7 +87,7 @@ class VirusArticleController extends Controller
      */
     public function show($id)
     {
-        $article = VirusArticleModel::find($id);
+        $article = VirusArticleModel::findOrFail($id);
         return view('admin.articles.info')->with('article', $article);
     }
 
@@ -99,10 +99,9 @@ class VirusArticleController extends Controller
      */
     public function edit($id)
     {
-//        $article = VirusArticleModel::find($id);
-//        return $article->detail;
+
         $typeViruses = VirusType::all();
-        return view('admin.articles.edit')->with('article', VirusArticleModel::find($id))
+        return view('admin.articles.edit')->with('article', VirusArticleModel::findOrFail($id))
                                                ->with('type_viruses', $typeViruses);
     }
 
@@ -115,7 +114,7 @@ class VirusArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = VirusArticleModel::find($id);
+        $article = VirusArticleModel::findOrFail($id);
         $articleDetail = VirusDetailModel::find($id);
         $article->name = $request->name;
         $article->type_id = $request->type_id;
@@ -160,7 +159,7 @@ class VirusArticleController extends Controller
      */
     public function destroy($id)
     {
-        $article = VirusArticleModel::find($id);
+        $article = VirusArticleModel::findOrFail($id);
         $article->delete();
         $article->detail->delete();
         return redirect('/admin/articles');
