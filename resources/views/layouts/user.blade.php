@@ -177,9 +177,9 @@
                     ></a>
 
                 <!-- Github -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                ><i class="fab fa-github"></i
-                    ></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/NoNutNghia/Aptech_Project_Group_3.git" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
             </section>
             <!-- Section: Social media -->
 
@@ -204,7 +204,7 @@
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                             <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">
-                                Products
+                                Specialization
                             </h6>
                             <p>
                                 <a href="https://laravel.com/docs/6.x" class="text-reset">Laravel 6</a>
@@ -212,6 +212,22 @@
                             <p>
                                 <a href="https://getbootstrap.com/" class="text-reset">Bootstrap 4</a>
                             </p>
+                            <p>
+                                <a href="https://jquery.com/download/" class="text-reset">Jquery</a>
+                            </p>
+                            <p>
+                                <a href="https://www.w3schools.com/html/" class="text-reset">HTML5</a>
+                            </p>
+                            <p>
+                                <a href="https://www.w3schools.com/css/default.asp" class="text-reset">CSS3</a>
+                            </p>
+                            <p>
+                                <a href="https://www.w3schools.com/js/default.asp" class="text-reset">Javascript</a>
+                            </p>
+                            <p>
+                                <a href="https://dev.mysql.com/doc/" class="text-reset">MySQL</a>
+                            </p>
+
                         </div>
                         <!-- Grid column -->
 

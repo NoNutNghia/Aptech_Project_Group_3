@@ -42,4 +42,10 @@
 - Build pj in your pc:
     . php artisan serve
 
+- Admin account:
+    username: VertexAdmin
+    password: adminvertex123@
 
+- User account:
+    username: VertexUser
+    password: uservertex123@

@@ -36,7 +36,7 @@
                                     <form action="{{route('articles.destroy', $article->id)}}" class="d-inline" method="POST">
                                         @csrf
                                         @method("DELETE")
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" onclick="return confirm('Do you want to delete?')">
                                             Delete <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>

@@ -72,11 +72,8 @@ class VirusArticleController extends Controller
             'precaution_required' => $request->precaution_required,
         ]);
 
-        $info = DB::table('virus_article_models')->count();
-
         toastr()->success("Success");
-        return redirect()->route('articles.show', $info);
-//        return $request;
+        return redirect()->route('articles.show', DB::table('virus_article_models')->latest()->first()->id);
     }
 
     /**
